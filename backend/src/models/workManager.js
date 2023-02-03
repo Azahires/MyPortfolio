@@ -1,23 +1,23 @@
 const AbstractManager = require("./AbstractManager");
 
-class ItemManager extends AbstractManager {
+class WorkManager extends AbstractManager {
   constructor() {
-    super({ table: "item" });
+    super({ table: "work" });
   }
 
-  insert(item) {
+  insert(work) {
     return this.connection.query(
       `insert into ${this.table} (title) values (?)`,
-      [item.title]
+      [work.title]
     );
   }
 
-  update(item) {
+  update(work) {
     return this.connection.query(
       `update ${this.table} set title = ? where id = ?`,
-      [item.title, item.id]
+      [work.title, work.id]
     );
   }
 }
 
-module.exports = ItemManager;
+module.exports = WorkManager;
